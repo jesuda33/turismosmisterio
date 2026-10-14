@@ -1,0 +1,554 @@
+
+/* ========================================
+   CONFIGURACIÓN GENERAL
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #101010;
+    color: #f5f5f5;
+    font-family: 'VT323', monospace;
+    font-size: 21px;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+
+/* ========================================
+   MENÚ DE NAVEGACIÓN
+======================================== */
+
+nav {
+    width: 100%;
+    min-height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 34px;
+    padding: 16px 20px;
+
+    background-color: #171717;
+    border-bottom: 1px solid #303030;
+}
+
+nav a {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-family: 'VT323', monospace;
+    font-size: 25px;
+    font-weight: normal;
+    letter-spacing: 0;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #8ab4f8;
+}
+
+
+/* ========================================
+   CONTENIDO PRINCIPAL
+======================================== */
+
+main {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 45px 20px 60px;
+}
+
+
+/* ========================================
+   TÍTULOS
+======================================== */
+
+h1,
+h2,
+h3 {
+    color: #ffffff;
+    font-family: 'VT323', monospace;
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 42px;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 36px;
+    letter-spacing: 1px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 29px;
+    margin-bottom: 10px;
+}
+
+
+/* ========================================
+   SECCIONES
+======================================== */
+
+section {
+    margin-bottom: 60px;
+}
+
+
+/* ========================================
+   SECCIÓN DE INICIO
+======================================== */
+
+.inicio {
+    margin-bottom: 55px;
+}
+
+.inicio h1 {
+    font-size: 48px;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    margin-bottom: 32px;
+}
+
+.inicio p {
+    color: #c9c9c9;
+    font-size: 23px;
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   PÁRRAFOS
+======================================== */
+
+p {
+    color: #cfcfcf;
+    font-family: 'VT323', monospace;
+    font-size: 23px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+/* ========================================
+   EXPERIENCIAS Y ARTÍCULOS
+======================================== */
+
+article {
+    background-color: #1a1a1a;
+    border: 1px solid #303030;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 8px;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+article:hover {
+    border-color: #454545;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+article h2 {
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+article h3 {
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+article p {
+    color: #bdbdbd;
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   IMÁGENES DEL CONTENIDO
+======================================== */
+
+main img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 25px 0;
+    border-radius: 6px;
+}
+
+
+/* ========================================
+   ENLACES GENERALES
+======================================== */
+
+a {
+    outline-offset: 4px;
+}
+
+main a {
+    color: #d6d6d6;
+    transition: color 0.2s ease;
+}
+
+main a:hover {
+    color: #ffffff;
+}
+
+
+/* ========================================
+   ENLACES DE EXPERIENCIAS
+======================================== */
+
+article a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #a9c7ff;
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+article a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+
+/* ========================================
+   SECCIÓN DEL MAPA
+======================================== */
+
+.mapa-section {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.mapa-section h2 {
+    margin-top: 0;
+    margin-bottom: 22px;
+}
+
+.mapa-section > p {
+    color: #c9c9c9;
+    font-size: 23px;
+    margin-bottom: 25px;
+}
+
+
+/* ========================================
+   CONTENEDOR DEL MAPA
+   MAPLIBRE + CARTO
+======================================== */
+
+.mapa-container {
+    width: 100%;
+    max-width: 1000px;
+    height: 600px;
+
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+
+    background-color: #101018;
+    border: 1px solid #343444;
+    border-radius: 10px;
+
+    box-shadow: 0 0 20px rgba(90, 50, 180, 0.15);
+}
+
+#mapa {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    overflow: hidden;
+    background-color: #101018;
+}
+
+
+/* ========================================
+   CONTROLES DEL MAPA
+======================================== */
+
+#mapa .maplibregl-ctrl-group {
+    background-color: #1b1b28;
+    border: 1px solid #454558;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+#mapa .maplibregl-ctrl-group button {
+    width: 30px;
+    height: 30px;
+    background-color: #1b1b28;
+    cursor: pointer;
+}
+
+#mapa .maplibregl-ctrl-group button + button {
+    border-top: 1px solid #454558;
+}
+
+#mapa .maplibregl-ctrl-group button span {
+    filter: invert(1);
+}
+
+#mapa .maplibregl-ctrl-group button:hover {
+    background-color: #34344a;
+}
+
+
+/* ========================================
+   CRÉDITOS Y ATRIBUCIONES DEL MAPA
+======================================== */
+
+.mapa-creditos {
+    max-width: 1000px;
+    margin: 12px auto 0;
+    color: #9999ad;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+}
+
+#mapa .maplibregl-ctrl-attrib {
+    background-color: rgba(20, 20, 30, 0.88);
+    color: #c9c9d5;
+    border-radius: 4px 0 0 0;
+}
+
+#mapa .maplibregl-ctrl-attrib a {
+    color: #a9c7ff;
+}
+
+#mapa .maplibregl-ctrl-attrib-button {
+    filter: invert(1);
+}
+
+
+/* ========================================
+   MARCADORES SVG DEL MAPA
+   ESTILO BLANCO Y NEGRO
+======================================== */
+
+.marcador-misterio {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Fondo negro y borde blanco */
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+/* Iconos SVG siempre blancos */
+.marcador-misterio svg {
+    width: 19px;
+    height: 19px;
+
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    pointer-events: none;
+}
+
+/* Efecto al pasar el cursor */
+.marcador-misterio:hover {
+    transform: scale(1.12);
+    background-color: #333333;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* Accesibilidad con teclado */
+.marcador-misterio:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   SELECCIÓN DE TEXTO
+======================================== */
+
+::selection {
+    background-color: #394b65;
+    color: #ffffff;
+}
+
+
+/* ========================================
+   DISEÑO RESPONSIVO PARA TABLETAS
+======================================== */
+
+@media (max-width: 768px) {
+
+    nav {
+        gap: 18px;
+        padding: 16px;
+    }
+
+    nav a {
+        font-size: 23px;
+    }
+
+    main {
+        padding: 35px 20px 45px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    h3 {
+        font-size: 26px;
+    }
+
+    .inicio h1 {
+        font-size: 40px;
+        letter-spacing: 1px;
+    }
+
+    p,
+    .inicio p,
+    article p {
+        font-size: 21px;
+    }
+
+    .mapa-container {
+        height: 400px;
+    }
+
+    article {
+        padding: 20px;
+    }
+}
+
+
+/* ========================================
+   DISEÑO RESPONSIVO PARA CELULARES
+======================================== */
+
+@media (max-width: 480px) {
+
+    nav {
+        gap: 12px 18px;
+        padding: 15px 12px;
+    }
+
+    nav a {
+        font-size: 21px;
+    }
+
+    main {
+        padding: 30px 16px 40px;
+    }
+
+    section {
+        margin-bottom: 40px;
+    }
+
+    .inicio {
+        margin-bottom: 40px;
+    }
+
+    .inicio h1 {
+        font-size: 34px;
+        letter-spacing: 1px;
+        line-height: 1.4;
+        margin-bottom: 22px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2,
+    .mapa-section h2 {
+        font-size: 28px;
+        letter-spacing: 0;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+    p,
+    .inicio p,
+    article p,
+    .mapa-section > p {
+        font-size: 20px;
+        line-height: 1.5;
+    }
+
+    .mapa-container {
+        height: 350px;
+        border-radius: 8px;
+    }
+
+    .mapa-creditos {
+        font-size: 16px;
+    }
+
+    article {
+        padding: 16px;
+        margin: 16px 0;
+    }
+
+    article h2 {
+        font-size: 27px;
+    }
+
+    main img {
+        margin: 20px 0;
+    }
+
+    .marcador-misterio {
+        width: 30px;
+        height: 30px;
+    }
+
+    .marcador-misterio svg {
+        width: 17px;
+        height: 17px;
+    }
+}

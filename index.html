@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Archivos Misteriosos</title>
+
+    <!-- Tipografía retro: Share Tech Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS del sitio -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- MapLibre -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css">
+</head>
+
+<body>
+
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="mitos.html">Mitos y Leyendas</a>
+        <a href="ovnis.html">Ovnis</a>
+        <a href="lugares.html">Lugares Misteriosos</a>
+        <a href="paranormal.html">Fenómenos Paranormales</a>
+    </nav>
+
+    <main>
+
+        <!-- SECCIÓN DE INICIO -->
+        <section class="inicio">
+            <h1>ARCHIVOS MISTERIOSOS</h1>
+            <p>
+                Historias, leyendas, experiencias y lugares
+                misteriosos del Atlántico.
+            </p>
+        </section>
+
+        <!-- SECCIÓN DEL MAPA -->
+        <section class="mapa-section">
+            <h2>EXPLORA EL ATLÁNTICO</h2>
+            <p>
+                Explora los lugares relacionados con las
+                historias y experiencias recopiladas.
+            </p>
+
+            <div class="mapa-container">
+                <div id="mapa"
+                     role="application"
+                     aria-label="Mapa interactivo de lugares misteriosos del Atlántico">
+                </div>
+            </div>
+
+            <p class="mapa-creditos">
+                Mapa: CARTO | Datos: OpenStreetMap
+            </p>
+        </section>
+
+    </main>
+
+    <!-- BIBLIOTECA MAPLIBRE -->
+    <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+
+    <script>
+        // ========================================
+        // CONFIGURACIÓN DEL MAPA
+        // ========================================
+
+        const mapa = new maplibregl.Map({
+            container: 'mapa',
+            style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+            center: [-74.88, 10.90],
+            zoom: 9,
+            minZoom: 6,
+            maxZoom: 18
+        });
+
+        mapa.addControl(
+            new maplibregl.NavigationControl(),
+            'top-right'
+        );
+
+        window.addEventListener('resize', function () {
+            mapa.resize();
+        });
+
+        // ========================================
+        // ICONOS SVG
+        // ========================================
+
+        const iconos = {
+            mitos: `
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 7
+                        C9 4 5 4 2.5 5.5
+                        V19 C6 17.5 9.5 18 12 20
+                        C14.5 18 18 17.5 21.5 19
+                        V5.5 C19 4 15 4 12 7Z"/>
+                    <path d="M12 7 V20"/>
+                </svg>
+            `,
+
+            ovnis: `
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 12
+                        C7.5 7 10 5 12 5
+                        S16.5 7 17 12"/>
+                    <path d="M3 13
+                        C3 11 8 10 12 10
+                        S21 11 21 13
+                        C21 15 16 17 12 17
+                        S3 15 3 13Z"/>
+                    <path d="M7 18 L5 20
+                        M12 18 V21
+                        M17 18 L19 20"/>
+                </svg>
+            `,
+
+            lugares: `
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 11 L12 3 L21 11"/>
+                    <path d="M5 10 V21 H19 V10"/>
+                    <path d="M9 21 V14 H15 V21"/>
+                </svg>
+            `,
+
+            paranormal: `
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M2 12
+                        C4.5 7.5 8 5 12 5
+                        S19.5 7.5 22 12
+                        C19.5 16.5 16 19 12 19
+                        S4.5 16.5 2 12Z"/>
+                    <circle cx="12" cy="12" r="3.5"/>
+                    <circle cx="12" cy="12" r="1"/>
+                </svg>
+            `
+        };
+
+        // ========================================
+        // INDICADORES DEL MAPA
+        // ========================================
+
+        const indicadores = [
+
+            // CATEGORÍAS PRINCIPALES
+            {
+                nombre: "Mitos y Leyendas",
+                coordenadas: [-74.88, 10.90],
+                pagina: "mitos.html",
+                color: "#8b5cf6",
+                icono: "mitos"
+            },
+            {
+                nombre: "Ovnis",
+                coordenadas: [-74.90, 10.94],
+                pagina: "ovnis.html",
+                color: "#22c55e",
+                icono: "ovnis"
+            },
+            {
+                nombre: "Lugares Misteriosos",
+                coordenadas: [-74.83, 10.94],
+                pagina: "lugares.html",
+                color: "#3b82f6",
+                icono: "lugares"
+            },
+            {
+                nombre: "Fenómenos Paranormales",
+                coordenadas: [-74.91, 10.96],
+                pagina: "paranormal.html",
+                color: "#ef4444",
+                icono: "paranormal"
+            },
+
+            // MITOS, LEYENDAS Y LUGARES DEL ATLÁNTICO
+            {
+                nombre: "La Novia de Puerto Colombia",
+                coordenadas: [-74.9528, 10.9922],
+                pagina: "mitos.html",
+                color: "#ec4899",
+                icono: "mitos"
+            },
+            {
+                nombre: "Castillo de la Alborada",
+                coordenadas: [-74.7997, 10.9450],
+                pagina: "lugares.html",
+                color: "#f59e0b",
+                icono: "lugares"
+            },
+            {
+                nombre: "Túneles del centro histórico",
+                coordenadas: [-74.7813, 10.9820],
+                pagina: "lugares.html",
+                color: "#06b6d4",
+                icono: "lugares"
+            },
+            {
+                nombre: "Historias de Barrio Abajo",
+                coordenadas: [-74.7855, 10.9927],
+                pagina: "mitos.html",
+                color: "#a78bfa",
+                icono: "mitos"
+            },
+            {
+                nombre: "La noche en la Ciénaga de Malambo",
+                coordenadas: [-74.7700, 10.8500],
+                pagina: "paranormal.html",
+                color: "#f97316",
+                icono: "paranormal"
+            },
+            {
+                nombre: "Los secretos ancestrales de Tubará",
+                coordenadas: [-74.9786, 10.8742],
+                pagina: "mitos.html",
+                color: "#84cc16",
+                icono: "mitos"
+            },
+
+            // OVNIS Y FENÓMENOS EN EL CIELO
+            {
+                nombre: "OVNIS sobre Barranquilla",
+                coordenadas: [-74.7813, 10.9685],
+                pagina: "ovnis.html",
+                color: "#22c55e",
+                icono: "ovnis"
+            },
+            {
+                nombre: "Luces sobre Puerto Colombia",
+                coordenadas: [-74.9547, 10.9878],
+                pagina: "ovnis.html",
+                color: "#06b6d4",
+                icono: "ovnis"
+            },
+            {
+                nombre: "El cielo de Sabanalarga",
+                coordenadas: [-74.9572, 10.6164],
+                pagina: "ovnis.html",
+                color: "#a78bfa",
+                icono: "ovnis"
+            },
+            {
+                nombre: "Las luces de Punta Astilleros",
+                coordenadas: [-75.15, 10.75],
+                pagina: "ovnis.html",
+                color: "#f59e0b",
+                icono: "ovnis"
+            },
+            {
+                nombre: "Una noche frente al Caribe",
+                coordenadas: [-75.03, 10.83],
+                pagina: "ovnis.html",
+                color: "#ec4899",
+                icono: "ovnis"
+            },
+            {
+                nombre: "El cielo sobre Piojó",
+                coordenadas: [-75.1082, 10.7484],
+                pagina: "ovnis.html",
+                color: "#84cc16",
+                icono: "ovnis"
+            },
+
+            // CEMENTERIOS Y LUGARES PARANORMALES
+            {
+                nombre: "Cementerio Universal",
+                coordenadas: [-74.8010, 10.9810],
+                pagina: "paranormal.html",
+                color: "#ef4444",
+                icono: "paranormal"
+            },
+            {
+                nombre: "Cementerio Calancala",
+                coordenadas: [-74.7920, 10.9630],
+                pagina: "paranormal.html",
+                color: "#a78bfa",
+                icono: "paranormal"
+            },
+            {
+                nombre: "Antiguo Hospital de Barranquilla",
+                coordenadas: [-74.7810, 10.9760],
+                pagina: "paranormal.html",
+                color: "#f97316",
+                icono: "paranormal"
+            },
+            {
+                nombre: "Los muertos de la Universidad Libre",
+                coordenadas: [-74.8170, 10.9940],
+                pagina: "paranormal.html",
+                color: "#8b5cf6",
+                icono: "paranormal"
+            },
+            {
+                nombre: "Hotel El Prado",
+                coordenadas: [-74.7980, 10.9900],
+                pagina: "lugares.html",
+                color: "#06b6d4",
+                icono: "lugares"
+            },
+            {
+                nombre: "El Seguro Social antiguo",
+                coordenadas: [-74.7900, 10.9750],
+                pagina: "paranormal.html",
+                color: "#eab308",
+                icono: "paranormal"
+            },
+
+            // HISTORIA Y MISTERIOS DEL CARIBE
+            {
+                nombre: "Nazis en Barranquilla",
+                coordenadas: [-74.7813, 10.9685],
+                pagina: "lugares.html",
+                color: "#64748b",
+                icono: "lugares"
+            },
+            {
+                nombre: "La Masacre de las Bananeras",
+                coordenadas: [-74.2470, 11.0060],
+                pagina: "lugares.html",
+                color: "#dc2626",
+                icono: "lugares"
+            },
+            {
+                nombre: "Los misterios del río Magdalena",
+                coordenadas: [-74.8500, 11.1000],
+                pagina: "paranormal.html",
+                color: "#0ea5e9",
+                icono: "paranormal"
+            },
+            {
+                nombre: "La Cueva y Gabriel García Márquez",
+                coordenadas: [-74.8010, 10.9910],
+                pagina: "lugares.html",
+                color: "#f59e0b",
+                icono: "lugares"
+            },
+            {
+                nombre: "Relatos del Embalse del Guájaro",
+                coordenadas: [-75.0500, 10.4500],
+                pagina: "paranormal.html",
+                color: "#14b8a6",
+                icono: "paranormal"
+            },
+            {
+                nombre: "Voces y relatos de Usiacurí",
+                coordenadas: [-75.2450, 10.7430],
+                pagina: "mitos.html",
+                color: "#84cc16",
+                icono: "mitos"
+            }
+        ];
+
+        // ========================================
+        // CREAR LOS MARCADORES CON ICONOS
+        // ========================================
+
+        mapa.on('load', function () {
+
+            indicadores.forEach(function (lugar) {
+
+                const marcador = document.createElement('a');
+
+                marcador.href = lugar.pagina;
+                marcador.className = 'marcador-misterio';
+                marcador.title = lugar.nombre;
+                marcador.setAttribute('aria-label', lugar.nombre);
+
+                marcador.style.setProperty(
+                    '--color-marcador',
+                    lugar.color
+                );
+
+                marcador.innerHTML = iconos[lugar.icono];
+
+                new maplibregl.Marker({
+                    element: marcador,
+                    anchor: 'center'
+                })
+                .setLngLat(lugar.coordenadas)
+                .addTo(mapa);
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>
